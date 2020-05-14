@@ -1,0 +1,188 @@
+{% load static %}
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+  <link href="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %}" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script>
+		alert("would you like to book a room?")
+	</script>
+  <style>
+  @media (min-width: 1200px) {
+.container {
+width: 900px;
+  top: 30px;
+}
+}
+@media (max-width: 768px){
+  .dropdown-menu{
+    /*property: value;*/
+    color: green;
+  }
+}
+
+.view{
+  background: transparent;
+}
+.box{
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+.form-horizontal{
+  font-style: calibri;
+
+}
+label{
+  color:black;
+  display: block;
+}
+.background-image{
+  opacity: 0.2px;
+}
+.dropdown {
+  background-color: white;
+}
+.button {
+    position: absolute;
+    display: block;
+}
+
+body {
+
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+  </style>
+</head>
+<body style="background-image:url({% static 'images/test3.jpg' %})">
+<div class="view" >
+<div class="container">
+
+  <div class="jumbotron" >
+  <form class="form-horizontal" action="pay" method="POST" >
+        {% csrf_token %}
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email"><b>First_Name:</b></label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"  placeholder="Enter First_Name" name="fname">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"><b>Last_Name:</b></label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"  placeholder="Enter Last_Name" name="lname">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"><b>Email_Id:</b></label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter Email_Id" name="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"><b>Phone_Number:</b></label>
+      <div class="col-sm-10">
+        <input type="tel" class="form-control"  placeholder="Enter Phone Number" name="pno">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"><b>Room_Type:</b></label>
+      <div class="col-sm-10">
+        <div class="radio">
+          <label><input type="radio" name="radio" checked>Single</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="radio">Double</label>
+        </div>
+        <div class="radio ">
+          <label><input type="radio" name="radio" >Triple</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"><b>Guests:</b></label>
+      <div class="col-sm-10">
+        <div class="radio">
+          <label><input type="radio" name="optradio" checked>1(one)</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">2(Two)</label>
+        </div>
+        <div class="radio ">
+          <label><input type="radio" name="optradio" >2(Two)-4(Four)</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"><b>Arrival_Date:</b></label>
+      <div class="col-sm-10">
+        <input type="date" id="birthday" class="form-control" name="arrival">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"><b>Time:</b></label>
+      <div class="col-sm-10">
+        <input type="time" id="appt" class="form-control" name="time">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"><b>Departure_Date:</b></label>
+      <div class="col-sm-10">
+        <input type="date" id="birthday" class="form-control" name="departure">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"><b>Gender:</b></label>
+      <div class="col-sm-10">
+        <div class="radio">
+          <label><input type="radio" name="gender" checked>Male</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="gender">Female</label>
+        </div>
+        <div class="radio ">
+          <label><input type="radio" name="gender" >Others</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" ><b>Selected_Hotel:</b></label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id=""  name="hotelname" value="{{hotel}}">
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+      <center>  <button type="submit"  class="btn btn-success btn-lg">Submit</button></center>
+      </div>
+    </div>
+
+
+
+
+  </form>
+</div>
+</div>
+</div>
+</body>
+</html>
